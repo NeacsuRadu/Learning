@@ -1,7 +1,7 @@
-#include <iostream>
+#include "header1.h"
 
 int main()
 {
-	std::cout << "Hello, world!";
+	function();
 	return 0;
 }

@@ -1,0 +1,10 @@
+all: first
+
+first: first.o
+	g++ -o first first.o
+
+first.o: first.cpp
+	g++ -Iinclude_headers -c first.cpp
+
+clean:
+	rm first.o first
