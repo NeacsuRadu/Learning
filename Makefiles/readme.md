@@ -1,0 +1,1 @@
+-o nume_fisier_rezultat
