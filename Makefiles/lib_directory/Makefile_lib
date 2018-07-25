@@ -1,0 +1,16 @@
+all: main
+
+main: main.o lib.a
+	g++ -o main main.o lib.a
+
+main.o: main.cpp
+	g++ -c main.cpp
+
+lib.a: lib_cpp.o
+	ar rcs lib.a lib_cpp.o
+
+lib_cpp.o: lib_cpp.cpp lib_header.h
+	g++ -c lib_cpp.cpp
+
+clean:
+	rm *.o *.a
