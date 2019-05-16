@@ -1,10 +1,10 @@
-# Just some assembly tutorials 
+## Just some assembly on ubuntu using [nasm](https://www.nasm.us/)
 
-In this tutorial I'm using [nasm](https://www.nasm.us/) and [ld](https://en.wikipedia.org/wiki/GNU_linker).
-
-User the following command to install nasm:
+Use the following command to install it: 
 ```
 sudo apt install nasm
 ```
 
-ld shoud be already installed on ubuntu. ~
+Useful tutorials:
+- [NASM Tutorial](https://cs.lmu.edu/~ray/notes/nasmtutorial/)
+- [ASMTutor](https://asmtutor.com/)
