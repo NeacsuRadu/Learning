@@ -52,3 +52,8 @@ console.log(fib(8));
 * using `var` makes the variable visibile for inner scopes, even if you redeclare it using `var` 
 
 
+### If-Else Conditional statements 
+
+* `==` and `!=` compares the operands (converting them if they are not the same type) by comparing their values (if they are primitive types) or their internal references
+* `===` and `!==` compares the operands like the above operators, but return false if they are not the same type
+* falsly values (values that evaluate to false): `false`, `undefined`, `null`, `0`, `NaN`, `""` (the empty string)
