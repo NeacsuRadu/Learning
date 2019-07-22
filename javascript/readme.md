@@ -49,7 +49,12 @@ console.log(fib(8));
 ### Let and Const - Variable declarations keywords
 
 * `let` and `const` declares a variable similar to c 
-* using `var` makes the variable visibile for inner scopes, even if you redeclare it using `var` 
+* using `var` makes the variable visibile for inner scopes, even if you redeclare it using `var`
+* `const` is like a reference in c++ 
+```
+const arr = [2, 1, 3, 5, 4];
+console.log(arr.sort());
+```
 
 
 ### If-Else Conditional Statements 
@@ -123,3 +128,15 @@ for (let info of actress) {
 
 ### Arrays 
 * Useful methods: `forEach`, `push`, `pop`, `shift`, `unshift`, `indexOf`, `splice`, `slice`, `sort`, `for-of`
+
+### Try-Catch-Finally-Throw
+* `try-catch`, `try-catch-finally`, `try-finally`
+* to throw an exception: `throw true`, `throw 'error'`, `throw -1`, `throw new Error('message')`
+```
+try {
+        throwMyError();
+}
+catch (e) {
+    console.log(e.message);
+}
+```
