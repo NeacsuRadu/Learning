@@ -50,7 +50,7 @@ console.log(fib(8));
 
 * `let` and `const` declares a variable similar to c 
 * using `var` makes the variable visibile for inner scopes, even if you redeclare it using `var`
-* `const` is like a reference in c++ 
+* `const` is like a reference in c++, you can modify the object but you cannot reassign it 
 ```
 const arr = [2, 1, 3, 5, 4];
 console.log(arr.sort());
@@ -139,4 +139,67 @@ try {
 catch (e) {
     console.log(e.message);
 }
+```
+
+### Objects in javascript 
+* an object is a collection of properties (a property is a name-value pair)
+* to access an object's property we use `ob.name` or `ob['name']` (useful when defining object properties at runtime)
+
+#### How to create objects 
+* using object initializers:
+```
+var a = 3;
+var b = 'value' 
+var o = { a, b }; // property names are the variable names used as initializers
+
+var p = { a: 3, b: 'value' };
+
+var q = {};
+q.a = a;
+q.b = b;
+
+console.log(o);
+console.log(p);
+console.log(q);
+/*
+    * Print: 
+    * Object 'o': { 'a': 3, 'b': 'value' }
+    * Object 'p': { 'a': 3, 'b': 'value' }
+    * Object 'q': { 'a': 3, 'b': 'value' }
+    */
+```
+* using `new Object()`
+```
+var o = new Object();
+o.a = 3;
+o.b = 'value';
+console.log(o) // Will print: Object 'o': { 'a': 3, 'b': 'value' }
+```
+* using `Object.create()`
+```
+// Animal properties and method encapsulation
+var Animal = {
+    type: 'Invertebrates', // Default value of properties
+    displayType: function() {  // Method which will display type of Animal
+        console.log(this.type);
+    }
+};
+
+// Create new animal type called animal1 
+var animal1 = Object.create(Animal);
+animal1.displayType(); // Output:Invertebrates
+
+// Create new animal type called Fishes
+var fish = Object.create(Animal);
+fish.type = 'Fishes';
+fish.displayType(); // Output:Fishes
+```
+* using a **Constructor Function**
+```
+functin Animal() {
+    this.name = 'dog';
+    this.age = 10;
+}
+
+var an = new Animal();
 ```
