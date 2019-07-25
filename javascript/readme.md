@@ -203,3 +203,15 @@ functin Animal() {
 
 var an = new Animal();
 ```
+### Template literale 
+```
+let a = 3;
+let b = 2;
+console.log(`Sum: ${a + b}
+Diff: ${a - b}`);
+```
+
+### Arrow functions 
+```
+a => a * 2;
+```
