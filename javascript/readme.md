@@ -215,3 +215,138 @@ Diff: ${a - b}`);
 ```
 a => a * 2;
 ```
+#### Singleton class using a function 
+```
+let ob = new function() {
+    this.a = 3;
+    this.b = true;
+    this.f = new function() {
+        console.log(this.a);
+    };
+};
+ob.f();
+```
+
+#### The prototype property function 
+```
+function Fruit (type) {
+    this.type = type;
+    this.color = 'unknown';
+}
+
+Fruit.prototype.getInformation = function() {
+    return 'This ' + this.type + ' is ' + this.color + '.';
+}
+
+let lime = new Fruit('Mexican lime');
+console.log(lime.getInformation());
+```
+### Classes
+* class declarations 
+```
+class Person {
+    constructor(name, age) {
+        this.name = name;
+        this.age = age;
+    }
+
+    print() {
+        console.log(name, age);
+    }
+};
+
+let p1 = new Person('gigel', 12);
+let p2 = new Person('nina', 52);
+/*
+ * Print: 
+ * gigel 12
+ * nina 52 
+ */
+```
+* class expressions - named / unnamed
+```
+let ceva = class {
+    constructor(a) {
+        this.a = a;
+    };
+};
+
+let ob = new ceva(5);
+console.log(ob.a);
+
+let ceva2 = class Animal {
+    constructor(legs, furry) {
+        this.legs = legs;
+        this.furry = furry;
+    }
+
+    print_this() {
+        console.log(this.legs, this.furry);
+    }
+};
+
+let ob2 = new ceva2(6, true);
+//let ob3 = new Animal(7, false); error 
+
+ob2.print_this();
+//ob3.print_this();
+```
+
+### Static methods 
+* a static method is common for all instances of a class
+* cannot be called on an object
+```
+class Static_class {
+    static compute (a, b) {
+        return a * b;
+    } 
+};
+
+var ob = new Static_class();
+console.log(Static_class.compute(2, 5));
+console.log(ob.compute(3, 5));
+```
+### Extending classes
+```
+class Animal {
+    constructor (legs) {
+        this.legs = legs;
+    }
+
+    eat() {
+        console.log('eating ...');
+    }
+
+    speak() {
+        console.log('speaking ...');
+    }
+};
+
+class Dog extends Animal {
+    constructor (name, legs) {
+        super(legs);
+        this.name = name;
+    }
+
+    speak() {
+        console.log('wuff ...');
+    }
+
+    tell_legs() {
+        console.log(this.legs);
+    }
+
+    // tell_legs2() {
+    //     console.log(super.this.legs);
+    // } error.. undefined .. don't do that 
+};
+
+let first_dog = new Dog('marian', 4);
+first_dog.eat();
+first_dog.speak();
+first_dog.tell_legs();
+//first_dog.tell_legs2();
+console.log(first_dog.legs);
+```
+
+
