@@ -50,3 +50,54 @@ console.log(some_number); // print: 10
 let some_let_number = 12;
 console.log(some_let_number);
 
+/**
+ * destructuring - arrays  
+ */
+
+let destructArray = [1, 2];
+let [firstDestr, secondDestr] = destructArray;
+console.log(firstDestr, secondDestr);
+
+// easy way to swap 2 variables
+[firstDestr, secondDestr] = [secondDestr, firstDestr];
+console.log(firstDestr, secondDestr);
+
+let destructArraynd = [1, 2, 3, 4];
+let [firstDestrnd, ... restDestr] = destructArraynd;
+console.log(firstDestrnd, restDestr);
+
+let [firstDestrd] = destructArraynd;
+console.log(firstDestrd);
+
+let [ , firstDestrth, ,secondDestrth] = destructArraynd;
+console.log(firstDestrth, secondDestrth);
+
+/**
+ * destructuring - objects
+ */
+
+let objDes = {
+    firstObj: 10,
+    secondObj: 'da',
+    thirdObj: true
+};
+
+let { firstObj, secondObj } = objDes; // { firstObj: a, secondObj: b } to create different names  
+console.log(firstObj, secondObj);
+
+let { firstObj: firstObjnd, ...restObj } = objDes;
+console.log(firstObjnd, restObj);
+
+/**
+ * default values
+ */
+function defaultFunction(defaultParameter: {a: string, b?: number}): void {
+    let {a, b = 10} = defaultParameter;
+    console.log(a, b);
+}
+
+defaultFunction({a:'ceva', b:100});
+defaultFunction({a:'ceva'});
+
+
+
