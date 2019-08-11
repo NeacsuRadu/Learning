@@ -172,4 +172,133 @@ console.log(okDict);
  * implementing an interface 
  */
 
- 
+interface ClockInterface {
+    time: Date;
+    setTime(t: Date);
+};
+
+class Clock implements ClockInterface {
+    time: Date = new Date;
+    setTime(t: Date) {
+        this.time = t;
+    }
+};
+
+
+// interface ClockConstructor1 {
+//     new (hour: number, minute: number);
+// };
+
+// interface Clock2 implements ClockConstructor1 {
+//     time: Date;
+//     constructor (h: number, m: number) {
+//     }
+// }; does not work 
+
+interface ClockConstructor {
+    new (year: number, month: number) : ClockInterface2;
+}
+
+interface ClockInterface2 {
+    currentTime: Date;
+    tick(): void;
+}
+
+function createClock(cstr: ClockConstructor, year: number, month: number): ClockInterface2 {
+    return new cstr(year, month);
+};
+
+class Clock1 implements ClockInterface2 {
+    currentTime: Date;
+    constructor(year: number, month: number) {
+        this.currentTime = new Date(year, month);
+    }
+
+    tick(): void {
+        console.log('tick1 tick1');
+    }
+};
+
+class Clock2 implements ClockInterface2 {
+    currentTime: Date;
+    constructor(year: number, month:number) {
+        this.currentTime = new Date(year, month);
+    }
+
+    tick(): void {
+        console.log('tick2 tick2 tick2');
+    }
+};
+
+let cl1: ClockInterface2 = createClock(Clock1, 2000, 10);
+let cl2: ClockInterface2 = createClock(Clock2, 2002, 10);
+cl1.tick();
+cl2.tick();
+
+let cl3: ClockInterface2 = new Clock2(2003, 10);
+cl3.tick();
+
+/**
+ * objects that behave as both a function and an object: HYBRID TYPES 
+ */
+
+interface FunctionObjectInterface {
+    (start: number): string; // function interface 
+    interval: number;
+    tick(): void;
+};
+
+function getFunctionObject(): FunctionObjectInterface { 
+    let res = (function(start: number){
+        console.log(`Function type: ${start}`);
+        this.interval = start;
+    }) as FunctionObjectInterface;
+    res.interval = 15;
+    res.tick = function(): void {
+        console.log(`Object part: ${this.interval}`);
+    }
+
+    return res;
+};
+
+let c: FunctionObjectInterface = getFunctionObject();
+c.tick();
+c(10);
+c.tick();
+
+/**
+ * interface expanding 
+ */
+
+interface Interface1 {
+    name: string;
+    speak(): void;
+};
+
+interface Interface2 {
+    age: number;
+    say(): void;
+};
+
+interface Interface3 extends Interface1, Interface2 {
+    height: number;
+    fnct(): void;
+};
+
+class ImplementingClass implements Interface3 {
+    name: string;
+    age: number;
+    height: number;
+    speak(): void {
+        console.log(`name: ${this.name}`);
+    }
+
+    say(): void {
+        console.log('say');
+    }
+
+    fnct(): void {
+        console.log('something');
+    }
+};
+
